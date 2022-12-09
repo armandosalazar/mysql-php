@@ -1,6 +1,38 @@
 <?php
-$mysqli = new mysqli("127.0.0.1", "root", "root", "php_db", 8889);
+$active = false;
+var_dump($_GET);
 
-//var_dump($mysqli->query("SELECT * FROM users")->fetch_all(MYSQLI_ASSOC)[0]["id"]);
-//var_dump($mysqli->query("SELECT * FROM users")->fetch_all(MYSQLI_NUM));
-//var_dump($mysqli->query("SELECT * FROM users")->fetch_all(MYSQLI_BOTH)[0]);
+// function changeState()
+// {
+//   global $active;
+//   $active = !$active;
+// }
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+</head>
+
+<body>
+  <?php var_dump($active) ?>
+  <button onclick="click();">Change state</button>
+  <script>
+    function click() {
+      console.log('Works!');
+      fetch('index.php?state=false', {
+          method: 'GET',
+          // body: new FormData()
+        })
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
+  </script>
+</body>
+
+</html>
